@@ -30,7 +30,7 @@ void main(List<String> arguments) async {
       String columnName = columnNames[j];
       Map<String, String> columnMap = {};
 
-      for (int i = 1; i < sheet.rows.length; i++) {
+      for (int i = 0; i < sheet.rows.length; i++) {
         List<String> formatId =
             sheet.rows[i].elementAt(0)?.value.toString().trim().split(' ') ??
                 [];
@@ -43,9 +43,14 @@ void main(List<String> arguments) async {
             )
             .join()
             .replaceAll(RegExp(r'[^a-zA-Z0-9]'), '');
-        key = key.substring(0, 1).toLowerCase() + key.substring(1);
+        print(i);
+        print(sheet.rows.length);
+        try {
+          key = key.substring(0, 1).toLowerCase() + key.substring(1);
+        } catch (_) {}
 
         String cellValue = sheet.rows[i].elementAt(j)?.value.toString() ?? '';
+        print(key);
         columnMap[key] = cellValue;
       }
 
