@@ -3,11 +3,9 @@ import 'dart:io';
 
 void main(List<String> arguments) async {
   stdout.write(
-      '\nMueve tu archivo "txt" a traducir dentro de la carpeta "input" y renombra el archivo como "translations"\n\n');
-  stdout.write(
-    '¿En qué formato quires exportar los archivos?\n 0 : ARB\n 1 : JSON\n 2 : TXT\n\n',
+    'In which format do you want to export the translations?\n 0 : ARB\n 1 : JSON\n 2 : TXT\n\n',
   );
-  final exportTypeIndex = stdin.readLineSync() ?? '0';
+  final exportTypeIndex = stdin.readLineSync() ?? '1';
   Directory directory = Directory.current;
   String filePath = '${directory.path}\\input\\translations.txt';
   stdout.write(
@@ -62,6 +60,10 @@ void main(List<String> arguments) async {
       exportTypeIndex,
     );
   }
+  stdout.write(
+    '\n\nPulsa cualquier tecla para cerrar.',
+  );
+  stdin.readLineSync();
 }
 
 String _formatTranslationKey(String translation) {
@@ -86,7 +88,7 @@ Future<void> exportData(
     (FileSystemEntity entidad) {
       if (entidad is File) {
         entidad.deleteSync();
-        print('Archivo borrado: ${entidad.path}');
+        //print('Archivo borrado: ${entidad.path}');
       }
     },
   );
@@ -103,7 +105,7 @@ Future<void> exportData(
       }
     }();
     stdout.write(
-      'Outputs: ${directory.path}\\outputs\\app_${translations.keys.toList()[i].toLowerCase()}.$exportType',
+      '\nOutputs: ${directory.path}\\outputs\\app_${translations.keys.toList()[i].toLowerCase()}.$exportType',
     );
 
     String outputFilePath =

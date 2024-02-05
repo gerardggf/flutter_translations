@@ -1,14 +1,9 @@
--EN:
-hello
-how are you
-//apple
-Pear
-Welcome to   mexico
-
-- ES:
+-EN
+hi
+bye
+- ES
 hola
-cómo estás
-//manzana
-pera
-Bienvenido a mexico
-
+adios
+- CA
+hola
+adeu
